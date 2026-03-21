@@ -1,4 +1,5 @@
 import { rgbToHex } from "./colors.js";
+
 const jsId = document.getElementById("code-js");
 const pythonId = document.getElementById("code-python");
 const ccId = document.getElementById("code-cc");
@@ -8,33 +9,6 @@ const codeJsTag = document.createElement("code");
 const codePythonTag = document.createElement("code");
 const codeCCTag = document.createElement("code");
 const codeJavaTag = document.createElement("code");
-
-// disegna segno plus canvas
-async function plusCanvas(ctx) {
-  // Parametri della croce
-  const w = canvas.width / 2;
-  const h = canvas.height / 2;
-  const x = w; // Centro orizzontale
-  const y = h; // Centro verticale
-  const size = 60; // Dimensione da metà croce all'estremità
-
-  // Impostazioni dello stile della linea
-  ctx.strokeStyle = "gray"; // Colore grigio
-  ctx.lineWidth = 4; // Spessore linea
-  ctx.setLineDash([8, 8]); // Crea il tratteggio (5px linea, 5px spazio)
-
-  // Disegna la linea verticale
-  ctx.beginPath();
-  ctx.moveTo(x, y - size); // Punto in alto
-  ctx.lineTo(x, y + size); // Punto in basso
-  ctx.stroke();
-
-  // Disegna la linea orizzontale
-  ctx.beginPath();
-  ctx.moveTo(x - size, y); // Punto a sinistra
-  ctx.lineTo(x + size, y); // Punto a destra
-  ctx.stroke();
-}
 
 let orderHexColors = [];
 // genera le tiles color palette
@@ -111,4 +85,4 @@ async function exportColors() {
     await clipBoardCopy(codeJavaTag.textContent);
   });
 }
-export { plusCanvas, tilesGen };
+export { tilesGen };
