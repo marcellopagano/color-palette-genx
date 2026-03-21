@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@lemonadejs/tabs/dist/style.min.css"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Color Palette GenX</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="container">
+      <h1>&#127912; Color Palette GenX</h1>
+      <!-- range input -->
+      <div class="range-wrap">
+        <input
+          type="range"
+          id="range-colors"
+          class="range"
+          name="range-colors"
+          min="3"
+          max="5"
+          value="5"
+          step="1"
+        />
+        <output class="bubble"></output>
+      </div>
+      <!-- progress -->
+      <progress id="progress-calc" max="100" value="0"></progress>
+      <!-- info -->
+      <div id="image-info"></div>
+      <!-- canvas -->
+      <canvas id="canvas"></canvas>
+      <!-- palette -->
+      <div id="palette-container"></div>
+
+      <!-- input file image hidden -->
+      <input
+        type="file"
+        id="imageInput"
+        accept="image/*"
+        style="display: none"
+      />
+      <!-- button palette generation  -->
+      <button type="button" id="btn-gen-palette">&#128260; Re-GenX</button>
+      <!-- export as code -->
+      <div id="export">
+        <div id="code-js" title="JS/TS"></div>
+        <div id="code-python" title="Python"></div>
+        <div id="code-cc" title="C/C++"></div>
+        <div id="code-java" title="Java/C#"></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/lemonadejs/dist/lemonade.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@lemonadejs/tabs/dist/index.min.js"></script>
+
+    <script type="module" src="./src/main.js"></script>
+    <script>
+      Tabs(document.getElementById("export"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+:root {
+  box-sizing: border-box;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  --primary: #555;
+  --secondary: lightslategray;
+  --btn-bg-color: lightgray;
+  --btn-text-color: black;
+  --white: whitesmoke;
+  --b-radius: 7px;
+  --rgba: rgba(0, 0, 0, 0.5);
+  --m30: 30px;
+  --h100: 100px;
+}
+body {
+  background-color: var(--white);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+h1 {
+  color: var(--primary);
+  text-align: center;
+}
+#container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+#main {
+  width: 90%;
+}
+#canvas {
+  width: 100%;
+  border-left: 1px solid var(--secondary);
+  border-right: 1px solid var(--secondary);
+  box-sizing: border-box;
+}
+#image-info {
+  width: 100%;
+  background-color: var(--secondary);
+  color: var(--white);
+  padding: 10px 0;
+  border-top-left-radius: var(--b-radius);
+  border-top-right-radius: var(--b-radius);
+  text-indent: 10px;
+}
+#image-info > p {
+  margin: 0;
+}
+#progress-calc {
+  width: 100%;
+  height: 10px;
+  visibility: hidden;
+  accent-color: var(--secondary);
+}
+#palette-container {
+  display: flex;
+  height: var(--h100);
+  background-color: var(--secondary);
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom-right-radius: var(--b-radius);
+  border-bottom-left-radius: var(--b-radius);
+  border-left: 1px solid var(--secondary);
+  border-right: 1px solid var(--secondary);
+}
+#btn-gen-palette {
+  margin-top: var(--m30);
+  padding: 10px;
+  font-size: 1.5rem;
+  color: var(--white);
+  background-color: var(--secondary);
+}
+
+#palette-container > *:first-child {
+  border-bottom-left-radius: var(--b-radius);
+}
+#palette-container > *:first-child > .tile-color-text {
+  border-bottom-left-radius: var(--b-radius);
+}
+#palette-container > *:last-child {
+  border-bottom-right-radius: var(--b-radius);
+}
+#palette-container > *:last-child > .tile-color-text {
+  border-bottom-right-radius: var(--b-radius);
+}
+.range-wrap {
+  position: relative;
+}
+.range {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  accent-color: var(--secondary);
+}
+.bubble {
+  background: var(--primary);
+  color: var(--white);
+  padding: 4px 12px;
+  position: absolute;
+  border-radius: 4px;
+  left: 50%;
+  transform: translate(-50%, -260%);
+  user-select: none;
+}
+#export {
+  font-size: 0.65rem;
+  border: 1px solid var(--primary);
+  margin-top: var(--m30);
+  background-color: var(--secondary);
+  color: greenyellow;
+  visibility: hidden;
+}
+.tile-color {
+  display: flex;
+  align-items: end;
+  flex: 1 1 0px;
+  height: var(--h100);
+  font-size: 0.75rem;
+  user-select: none;
+  position: relative;
+}
+.tile-color-text {
+  width: 100%;
+  height: 20px;
+  padding: 10px 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  user-select: none;
+}
+code.touched::after,
+.tile-color-text::after {
+  content: "copied";
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--rgba);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+}
+
+code.touched::after,
+.tile-color-text.touched::after {
+  display: block;
+  animation:
+    fadeIn 2s ease forwards,
+    fadeOut 2s ease forwards;
+}
+
+code {
+  display: block;
+  position: relative;
+  background-color: var(--rgba);
+}
+
+#canvas,
+code,
+.tile-color-text,
+button:hover {
+  cursor: pointer;
+}
+
+/* Definizione delle animazioni fadeIn e fadeOut */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  #container {
+    width: 500px;
+  }
+}
