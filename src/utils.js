@@ -11,8 +11,17 @@ const codeCCTag = document.createElement("code");
 const codeJavaTag = document.createElement("code");
 
 let orderHexColors = [];
+// carica l'immagine
+async function loadImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = (e) => reject(e);
+    img.src = file;
+  });
+}
 // genera le tiles color palette
-async function tilesGen(rgbColors, paletteContainer, paletteColors) {
+async function tilesColor(rgbColors, paletteContainer, paletteColors) {
   orderHexColors = [];
   // ordinamento colori dal più scuro al più chiaro
   rgbColors.forEach((color) => {
@@ -34,10 +43,9 @@ async function tilesGen(rgbColors, paletteContainer, paletteColors) {
     tile.appendChild(tileText);
     paletteContainer.appendChild(tile);
   });
-  exportColors();
 }
 // esporta i colori esadecimali in variabili di vari linguaggi
-async function exportColors() {
+async function exportColor() {
   // reset dei contenuti tag code
   codeJsTag.textContent = "";
   codePythonTag.textContent = "";
@@ -68,7 +76,7 @@ async function exportColors() {
     try {
       await navigator.clipboard.writeText(code);
     } catch (error) {
-      console.log(error.message);
+      throw new Error(error.message);
     }
   }
   // gestore eventi per copia appunti su tabs codice
@@ -85,4 +93,4 @@ async function exportColors() {
     await clipBoardCopy(codeJavaTag.textContent);
   });
 }
-export { tilesGen };
+export { tilesColor, exportColor, loadImage };

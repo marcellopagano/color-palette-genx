@@ -6,6 +6,7 @@ const canvas = document.getElementById("canvas");
 export default async function readFile(ctx, file) {
   if (file && file.type.startsWith("image/")) {
     const reader = new FileReader();
+    
     return new Promise((resolve, reject) => {
       reader.onload = async function (e) {
         const img = new Image();

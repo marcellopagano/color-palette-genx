@@ -1,24 +1,25 @@
-import canvasImg from "./assets/upload.png";
+import canvasFileImg from "./assets/upload.png";
+import { loadImage } from "./utils";
 
 // disegna la canvas di partenza
-export default async function canvasLoad(ctx) {
+export default async function canvasFirstImage(ctx) {
   // parametri
   const w = canvas.width / 2;
   const h = canvas.height / 2;
   const x = w; // Centro orizzontale
   const y = h; // Centro verticale
 
-  // carica l'immagine
-  async function loadImage(src) {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => resolve(img);
-      img.onerror = (e) => reject(e);
-      img.src = src;
-    });
-  }
-  // disegna l'immagine sulla canvas
-  async function drawImageOnCanvas(ctx, img) {
+  // // carica l'immagine
+  // async function loadImage(src) {
+  //   return new Promise((resolve, reject) => {
+  //     const img = new Image();
+  //     img.onload = () => resolve(img);
+  //     img.onerror = (e) => reject(e);
+  //     img.src = src;
+  //   });
+  // }
+  // disegna l'immagine/icona iniziale sulla canvas
+  async function drawFirstImage(ctx, img) {
     const imageWidth = 50;
     const imageHeight = 50;
     // calcola le coordinate del punto centrale dell'immagine
@@ -38,10 +39,10 @@ export default async function canvasLoad(ctx) {
   }
 
   try {
-    const img = await loadImage(canvasImg);
-    drawImageOnCanvas(ctx, img);
+    const img = await loadImage(canvasFileImg);
+    drawFirstImage(ctx, img);
     drawText();
   } catch (error) {
-    console.log(error.message);
+    throw new Error(error.message);
   }
 }

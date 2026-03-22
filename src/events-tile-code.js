@@ -1,9 +1,11 @@
-export default function touch() {
+export default function eventsTileCode() {
   // Seleziona tutti i tile
   const tiles = document.querySelectorAll(".tile-color-text");
   const codex = document.querySelectorAll("code");
-
-   // animazione testo css "copied" su tiles
+  // ******************************
+  // ****** CSS TAILS EVENTI ******
+  // ******************************
+  // animazione testo css "copied" su tiles
   tiles.forEach((tile) => {
     tile.addEventListener("mousedown", () => {
       tile.classList.add("touched");
@@ -13,6 +15,9 @@ export default function touch() {
       setTimeout(() => tile.classList.remove("touched"), 2000);
     });
   });
+  // ******************************
+  // ***** CSS CODEX EVENTI *******
+  // ******************************
   // animazione testo css "copied" su codice
   codex.forEach((code) => {
     code.addEventListener("mousedown", () => {

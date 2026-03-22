@@ -14,6 +14,8 @@
     sans-serif;
   --primary: #555;
   --secondary: lightslategray;
+  --drag-over: DeepSkyBlue;
+  --drag-over-error: crimson;
   --btn-bg-color: lightgray;
   --btn-text-color: black;
   --white: whitesmoke;
@@ -22,6 +24,7 @@
   --m30: 30px;
   --h100: 100px;
 }
+
 body {
   background-color: var(--white);
   margin: 0;
@@ -48,6 +51,20 @@ h1 {
   border-right: 1px solid var(--secondary);
   box-sizing: border-box;
 }
+
+#canvas,
+code,
+.tile-color-text,
+button:hover {
+  cursor: pointer;
+}
+.drag-over {
+  border: 3px dashed var(--drag-over) !important;
+}
+.drag-over-error {
+  border: 3px dashed var(--drag-over-error) !important;
+}
+
 #image-info {
   width: 100%;
   background-color: var(--secondary);
@@ -172,13 +189,6 @@ code {
   display: block;
   position: relative;
   background-color: var(--rgba);
-}
-
-#canvas,
-code,
-.tile-color-text,
-button:hover {
-  cursor: pointer;
 }
 
 /* Definizione delle animazioni fadeIn e fadeOut */
